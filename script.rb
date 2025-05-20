@@ -13,7 +13,6 @@ def stock_picker(arr)
           if is_profit2_bigger?(current_best_profit, interaction_profit)
             most_lucrative_pair[0] = i
             most_lucrative_pair[1] = j
-            puts "most lucrative pair is: #{most_lucrative_pair}"
             most_lucrative_pair
           else
             most_lucrative_pair
