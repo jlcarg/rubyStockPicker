@@ -1,8 +1,10 @@
 def stock_picker(arr)
-  arr.reduce([]) do |most_lucrative_pair, day_price|
+  [1].reduce([]) do |most_lucrative_pair, day_price|
     arr.each_with_index do |price, i|
+      # We want to calculate the profit when buying in day i and each possible j day to sell
+      # For that we want to start the j loop one day after i
       ((i + 1)..arr.length - 1).each do |j|
-        unless i == (arr.length - 2)
+        unless i == (arr.length - 1)
           most_lucrative_pair[0], most_lucrative_pair[1] = i, j if most_lucrative_pair.empty?
 
           interaction_profit = get_profit(arr[i], arr[j])
@@ -11,18 +13,15 @@ def stock_picker(arr)
           if is_profit2_bigger?(current_best_profit, interaction_profit)
             most_lucrative_pair[0] = i
             most_lucrative_pair[1] = j
+            puts "most lucrative pair is: #{most_lucrative_pair}"
             most_lucrative_pair
           else
             most_lucrative_pair
           end
-
-        else
-          p most_lucrative_pair
-          return most_lucrative_pair
         end
       end
     end
-    most_lucrative_pair
+    p most_lucrative_pair
   end
 end
 
@@ -34,4 +33,4 @@ def is_profit2_bigger?(profit1, profit2)
   profit1 < profit2
 end
 
-stock_picker([17,3,6,9,15,8,6,1,10]) 
+stock_picker([17,3,6,9,15,8,6,1,10])
