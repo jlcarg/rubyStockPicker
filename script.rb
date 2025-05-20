@@ -1,5 +1,5 @@
 def stock_picker(arr)
-  [1].reduce([]) do |most_lucrative_pair, day_price|
+  [1].reduce([]) do |most_lucrative_pair, val|
     arr.each_with_index do |price, i|
       # We want to calculate the profit when buying in day i and each possible j day to sell
       # For that we want to start the j loop one day after i
